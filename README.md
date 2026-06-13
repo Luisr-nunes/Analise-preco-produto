@@ -1,68 +1,105 @@
 # Análise de Preço de Produto
 
-Sistema em C para gestão de preços de produtos, desenvolvido de forma incremental através de 5 atividades que exploram conceitos fundamentais de ponteiros.
+Sistema em C para gestão de preços de produtos, desenvolvido de forma incremental através de 5 atividades que exploram conceitos fundamentais de ponteiros e alocação dinâmica.
+
+---
 
 ## Estrutura do Projeto
 
 ```
 Analise-preco-produto/
 ├── include/
-│   └── produto.h       # Definição da struct Produto e protótipos de funções
-├── src/
-│   ├── main.c           # Ponto de entrada e fluxo principal
+│   └── produto.h        # Struct Produto + protótipos de funções
+│
+├── src/                 # Implementações
+│   ├── main.c           # Entry point interativo e fluxo principal
 │   ├── produto.c        # Operações CRUD sobre Produto
-│   └── utils.c          # Funções utilitárias de exibição
+│   └── utils.c          # Funções utilitárias e de exibição
+│
 ├── Makefile             # Automação de compilação
 └── README.md
 ```
 
-## Compilação e Execução
+> **Nota:** `produto.exe` (executável gerado na compilação) **não faz parte do repositório** — está no `.gitignore`.
 
-```bash
-make
-./produto
-```
+---
 
-Para limpar os binários:
+## Descrição dos Módulos
 
-```bash
-make clean
-```
+### `produto.h` — Modelo de Dados Central
+
+Define a `struct Produto` com `id` (inteiro) e `preco` (float). Centraliza os protótipos de funções CRUD e de impressão para o projeto. Utiliza `#ifndef` para proteção contra múltiplas inclusões.
+
+### `produto.c` — Camada de Operações (CRUD)
+
+Implementa a lógica de negócio do sistema usando ponteiros:
+- `criar_produtos`: Retorna um ponteiro para a área de memória alocada (`malloc`).
+- `cadastrar_produto` / `aplicar_desconto`: Recebem ponteiros e modificam os dados diretamente na memória.
+- `liberar_produtos`: Limpa a memória com `free()`.
+
+### `utils.c` — Funções Utilitárias
+
+Contém a função `imprimir_produtos`, que foi projetada especificamente para iterar e exibir arrays de struct utilizando **exclusivamente aritmética de ponteiros** em vez de indexação por colchetes, conforme requisitos das atividades.
+
+### `main.c` — Entry Point
+
+Responsável pela interação com o usuário (perguntar a quantidade de produtos, receber os dados via `scanf` e organizar as chamadas para as funções dos módulos). 
+
+---
 
 ## Resolução das Atividades
 
-### Atividade 1 — Fundamentos de Ponteiros e Modificação Direta
+- **Atividade 1 (Fundamentos):** Aumento de 10% no preço aplicado exclusivamente através de um ponteiro (`*ptr_preco *= 1.10f`), provando a alteração na memória.
+- **Atividade 2 (Passagem por Referência):** Lógica encapsulada em `void aplicar_desconto(float *preco, float percentual)`.
+- **Atividade 3 (Structs):** Agrupamento de `id` e `preco` em `Produto`. Acesso aos campos feito com o operador seta (`produto->preco`).
+- **Atividade 4 (Aritmética de Ponteiros):** A função `imprimir_produtos` percorre o array fazendo `(ptr + i)->campo`, sem o uso de colchetes `[]`.
+- **Atividade 5 (Alocação Dinâmica):** Uso de `malloc` para criar o array com tamanho variável em tempo de execução e `free` no encerramento da `main`.
 
-Declaração de uma variável `float preco` inicializada com `100.0` e um ponteiro `float *ptr_preco` apontando para seu endereço. O aumento de 10% é aplicado exclusivamente através do ponteiro com a expressão `*ptr_preco *= 1.10f`, demonstrando que a modificação via ponteiro altera diretamente o valor original na memória.
+---
 
-### Atividade 2 — Passagem por Referência
+## Como Compilar e Executar
 
-A lógica de alteração de preço é encapsulada na função `aplicar_desconto`, que recebe um ponteiro `float *preco` e um percentual `float`. A função modifica o valor original na memória através da desreferência do ponteiro (`*preco`), eliminando a necessidade de retorno. Na `main`, o endereço da variável é passado com o operador `&`.
+### Pré-requisitos
 
-### Atividade 3 — Ponteiros para Structs
+- GCC (`gcc --version`)
+- Make (`make --version`)
+- Windows, Linux ou macOS
 
-O conceito de produto é formalizado em uma `struct Produto` contendo `id` (inteiro) e `preco` (float), definida com `typedef` para simplificar as declarações. A função `aplicar_desconto` é atualizada para receber um `Produto *produto` e utiliza o operador seta (`->`) para acessar e modificar o campo `preco` diretamente na memória.
+### Comandos
 
-### Atividade 4 — Aritmética de Ponteiros em Arrays
+```bash
+# Compilar o executável
+make
 
-O programa é expandido para gerenciar um array estático de 3 produtos. A função `imprimir_produtos` recebe um ponteiro `Produto *ptr` e a quantidade de itens, percorrendo o array exclusivamente com aritmética de ponteiros: `(ptr + i)->id` e `(ptr + i)->preco`. A sintaxe de colchetes (`ptr[i]`) não é utilizada, conforme requisitado.
+# Executar a aplicação (Windows)
+.\produto.exe
+# (Linux/macOS)
+./produto
 
-### Atividade 5 — Alocação Dinâmica de Memória
+# Limpar os arquivos compilados
+make clean
+```
 
-O sistema passa a suportar um número variável de produtos definido pelo usuário em tempo de execução. As operações são organizadas em funções CRUD:
+### `.gitignore` recomendado
 
-| Função               | Responsabilidade                                           |
-|----------------------|------------------------------------------------------------|
-| `criar_produtos`     | Aloca memória dinamicamente com `malloc`                   |
-| `cadastrar_produto`  | Preenche os dados de um produto via entrada do usuário     |
-| `aplicar_desconto`   | Aplica um percentual de desconto ao preço do produto       |
-| `imprimir_produtos`  | Exibe todos os produtos usando aritmética de ponteiros     |
-| `liberar_produtos`   | Libera a memória alocada com `free`                        |
+```
+*.exe
+*.o
+```
 
-A alocação utiliza `malloc(quantidade * sizeof(Produto))` com verificação de falha. O preenchimento dos dados é feito iterando com ponteiros, e ao final do programa a memória é liberada com `free()` para evitar vazamentos.
+---
 
-## Tecnologias
+## Decisões Técnicas
 
-- **Linguagem:** C (C99)
-- **Compilador:** GCC
-- **Build:** Make
+**Por que `typedef struct`?**
+O uso de `typedef` permite instanciar e utilizar a estrutura chamando apenas `Produto` em vez de `struct Produto`, deixando o código mais limpo e próximo do padrão usado em mercado e em projetos enterprise.
+
+**Por que aritmética de ponteiros em `utils.c`?**
+A escolha por `(ptr + i)->preco` em vez de `ptr[i].preco` foi para exercitar o controle explícito sobre o endereçamento de memória (deslocamento através do tamanho natural do tipo de dado), um requisito da Atividade 4.
+
+**Separação em Módulos (Header / Source):**
+Para estruturar o projeto com cara de "enterprise", a declaração da interface (header) foi separada da implementação (src). Isso melhora o encapsulamento e a manutenibilidade caso a aplicação venha a crescer.
+
+---
+
+> Desenvolvido como projeto acadêmico para a disciplina de Programação Imperativa e Funcional — CESAR School, Recife/PE.
