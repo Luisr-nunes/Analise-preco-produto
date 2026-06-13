@@ -1,6 +1,76 @@
+<div align="center" id="portuguese-version">
+
 # Análise de Preço de Produto
 
-Sistema em C para gestão de preços de produtos, desenvolvido de forma incremental através de 5 atividades que exploram conceitos fundamentais de ponteiros e alocação dinâmica.
+**PT** | [EN](#english-version)
+
+> Sistema em C para gestão de preços de produtos, desenvolvido de forma incremental através de 5 atividades que exploram conceitos fundamentais de ponteiros e alocação dinâmica.
+
+<br>
+
+</div>
+
+---
+
+## Sobre
+
+**Análise de Preço de Produto** é uma aplicação de terminal construída para reforçar os conceitos de controle de memória em C. O projeto foi projetado para rodar offline, manipulando structs e ponteiros nativamente com alta performance, simulando operações de banco de dados (CRUD) de forma puramente em memória (RAM).
+
+---
+
+## Atividades Resolvidas
+
+### 1. Fundamentos (Modificação Direta)
+- Aumento de 10% no preço aplicado exclusivamente através de um ponteiro (`*ptr_preco *= 1.10f`), provando a alteração na memória.
+
+### 2. Passagem por Referência
+- Lógica encapsulada em `void aplicar_desconto(float *preco, float percentual)`, modificando os dados diretamente.
+
+### 3. Structs
+- Agrupamento de `id` e `preco` em `Produto`. Acesso aos campos feito com o operador seta (`produto->preco`).
+
+### 4. Aritmética de Ponteiros
+- A função `imprimir_produtos` percorre o array fazendo `(ptr + i)->campo`, sem o uso de colchetes `[]` para indexação.
+
+### 5. Alocação Dinâmica
+- Uso de `malloc` para criar o array com tamanho variável em tempo de execução e `free` no encerramento da `main`.
+
+---
+
+## Tecnologias Utilizadas
+
+| Camada | Tecnologia | Descrição |
+|---|---|---|
+| Lógica Principal | **C (C99)** | Linguagem base focada em ponteiros e memória |
+| Compilador | **GCC** | Para build multiplataforma (MinGW no Windows) |
+| Automação | **Make** | Scripts rápidos de compilação local |
+
+---
+
+## Como Rodar o Código
+
+### Pré-requisitos
+
+- [GCC](https://gcc.gnu.org/) instalado no sistema
+- [Make](https://www.gnu.org/software/make/)
+- Windows, Linux ou macOS
+
+### Compilação e Execução
+
+```bash
+# Clone o repositório
+git clone https://github.com/Luisr-nunes/Analise-preco-produto.git
+cd Analise-preco-produto
+
+# Compile o código e gere o executável
+make
+
+# Execute a aplicação (Windows)
+.\produto.exe
+
+# Limpe os artefatos de compilação
+make clean
+```
 
 ---
 
@@ -10,96 +80,129 @@ Sistema em C para gestão de preços de produtos, desenvolvido de forma incremen
 Analise-preco-produto/
 ├── include/
 │   └── produto.h        # Struct Produto + protótipos de funções
-│
-├── src/                 # Implementações
-│   ├── main.c           # Entry point interativo e fluxo principal
-│   ├── produto.c        # Operações CRUD sobre Produto
-│   └── utils.c          # Funções utilitárias e de exibição
-│
-├── Makefile             # Automação de compilação
-└── README.md
+├── src/                 
+│   ├── main.c           # Entry point interativo
+│   ├── produto.c        # Operações CRUD
+│   └── utils.c          # Funções utilitárias (aritmética de ponteiros)
+└── Makefile             # Automação de compilação
 ```
 
-> **Nota:** `produto.exe` (executável gerado na compilação) **não faz parte do repositório** — está no `.gitignore`.
+---
+
+## Desenvolvido por
+
+<div align="center">
+
+**Luis Nunes**
+
+[![GitHub](https://img.shields.io/badge/GitHub-Luisr--nunes-181717?style=flat-square&logo=github)](https://github.com/Luisr-nunes)
+
+</div>
 
 ---
 
-## Descrição dos Módulos
-
-### `produto.h` — Modelo de Dados Central
-
-Define a `struct Produto` com `id` (inteiro) e `preco` (float). Centraliza os protótipos de funções CRUD e de impressão para o projeto. Utiliza `#ifndef` para proteção contra múltiplas inclusões.
-
-### `produto.c` — Camada de Operações (CRUD)
-
-Implementa a lógica de negócio do sistema usando ponteiros:
-- `criar_produtos`: Retorna um ponteiro para a área de memória alocada (`malloc`).
-- `cadastrar_produto` / `aplicar_desconto`: Recebem ponteiros e modificam os dados diretamente na memória.
-- `liberar_produtos`: Limpa a memória com `free()`.
-
-### `utils.c` — Funções Utilitárias
-
-Contém a função `imprimir_produtos`, que foi projetada especificamente para iterar e exibir arrays de struct utilizando **exclusivamente aritmética de ponteiros** em vez de indexação por colchetes, conforme requisitos das atividades.
-
-### `main.c` — Entry Point
-
-Responsável pela interação com o usuário (perguntar a quantidade de produtos, receber os dados via `scanf` e organizar as chamadas para as funções dos módulos). 
+<br>
+<br>
 
 ---
 
-## Resolução das Atividades
+<div align="center" id="english-version">
 
-- **Atividade 1 (Fundamentos):** Aumento de 10% no preço aplicado exclusivamente através de um ponteiro (`*ptr_preco *= 1.10f`), provando a alteração na memória.
-- **Atividade 2 (Passagem por Referência):** Lógica encapsulada em `void aplicar_desconto(float *preco, float percentual)`.
-- **Atividade 3 (Structs):** Agrupamento de `id` e `preco` em `Produto`. Acesso aos campos feito com o operador seta (`produto->preco`).
-- **Atividade 4 (Aritmética de Ponteiros):** A função `imprimir_produtos` percorre o array fazendo `(ptr + i)->campo`, sem o uso de colchetes `[]`.
-- **Atividade 5 (Alocação Dinâmica):** Uso de `malloc` para criar o array com tamanho variável em tempo de execução e `free` no encerramento da `main`.
+# Product Price Analysis
+
+[PT](#portuguese-version) | **EN**
+
+> A C-based system for product price management, incrementally developed through 5 activities that explore fundamental pointer and dynamic allocation concepts.
+
+<br>
+
+</div>
 
 ---
 
-## Como Compilar e Executar
+## About
 
-### Pré-requisitos
+**Product Price Analysis** is a terminal application built to reinforce memory management concepts in C. The project is designed to run offline, manipulating structs and pointers natively for high performance, simulating database CRUD operations entirely in-memory (RAM).
 
-- GCC (`gcc --version`)
-- Make (`make --version`)
-- Windows, Linux ou macOS
+---
 
-### Comandos
+## Resolved Activities
+
+### 1. Fundamentals (Direct Modification)
+- 10% price increase applied exclusively through a pointer (`*ptr_preco *= 1.10f`), proving the memory alteration.
+
+### 2. Pass by Reference
+- Logic encapsulated in `void aplicar_desconto(float *preco, float percentual)`, modifying data directly.
+
+### 3. Structs
+- Grouping of `id` and `price` into `Produto`. Field access performed using the arrow operator (`produto->preco`).
+
+### 4. Pointer Arithmetic
+- The `imprimir_produtos` function iterates through the array using `(ptr + i)->field`, entirely avoiding `[]` brackets for indexing.
+
+### 5. Dynamic Allocation
+- Use of `malloc` to create a variable-size array at runtime, properly cleaned up with `free` at the end of the `main` execution.
+
+---
+
+## Tech Stack
+
+| Layer | Technology | Description |
+|---|---|---|
+| Core Logic | **C (C99)** | Base language focusing on pointers and memory |
+| Compiler | **GCC** | For cross-platform build (MinGW on Windows) |
+| Automation | **Make** | Quick local compilation scripts |
+
+---
+
+## How to Run the Code
+
+### Prerequisites
+
+- [GCC](https://gcc.gnu.org/) installed on the system
+- [Make](https://www.gnu.org/software/make/)
+- Windows, Linux or macOS
+
+### Setup & Execution
 
 ```bash
-# Compilar o executável
+# Clone the repository
+git clone https://github.com/Luisr-nunes/Analise-preco-produto.git
+cd Analise-preco-produto
+
+# Compile the code and generate the binary
 make
 
-# Executar a aplicação (Windows)
+# Run the application (Windows)
 .\produto.exe
-# (Linux/macOS)
-./produto
 
-# Limpar os arquivos compilados
+# Clean the build artifacts
 make clean
 ```
 
-### `.gitignore` recomendado
+---
+
+## Project Structure
 
 ```
-*.exe
-*.o
+Analise-preco-produto/
+├── include/
+│   └── produto.h        # Produto struct + function prototypes
+├── src/                 
+│   ├── main.c           # Interactive entry point
+│   ├── produto.c        # CRUD operations
+│   └── utils.c          # Utility functions (pointer arithmetic)
+└── Makefile             # Compilation automation
 ```
 
 ---
 
-## Decisões Técnicas
+## Developed by
 
-**Por que `typedef struct`?**
-O uso de `typedef` permite instanciar e utilizar a estrutura chamando apenas `Produto` em vez de `struct Produto`, deixando o código mais limpo e próximo do padrão usado em mercado e em projetos enterprise.
+<div align="center">
 
-**Por que aritmética de ponteiros em `utils.c`?**
-A escolha por `(ptr + i)->preco` em vez de `ptr[i].preco` foi para exercitar o controle explícito sobre o endereçamento de memória (deslocamento através do tamanho natural do tipo de dado), um requisito da Atividade 4.
+**Luis Nunes**
 
-**Separação em Módulos (Header / Source):**
-Para estruturar o projeto com cara de "enterprise", a declaração da interface (header) foi separada da implementação (src). Isso melhora o encapsulamento e a manutenibilidade caso a aplicação venha a crescer.
+[![GitHub](https://img.shields.io/badge/GitHub-Luisr--nunes-181717?style=flat-square&logo=github)](https://github.com/Luisr-nunes)
 
----
-
-> Desenvolvido como projeto acadêmico para a disciplina de Programação Imperativa e Funcional — CESAR School, Recife/PE.
+</div>
