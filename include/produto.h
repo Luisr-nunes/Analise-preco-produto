@@ -7,5 +7,6 @@ typedef struct {
 } Produto;
 
 void aplicar_desconto(Produto *produto, float percentual);
+void imprimir_produtos(Produto *ptr, int quantidade);
 
 #endif

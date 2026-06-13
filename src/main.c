@@ -2,13 +2,23 @@
 #include "produto.h"
 
 int main(void) {
-    Produto p = {1, 100.0f};
+    Produto estoque[3] = {
+        {1, 50.0f},
+        {2, 120.0f},
+        {3, 89.90f}
+    };
+    int total = 3;
+    int i;
 
-    printf("Produto %d - Preco original: R$ %.2f\n", p.id, p.preco);
+    printf("=== Estoque Original ===\n");
+    imprimir_produtos(estoque, total);
 
-    aplicar_desconto(&p, 10.0f);
+    for (i = 0; i < total; i++) {
+        aplicar_desconto(&estoque[i], 10.0f);
+    }
 
-    printf("Produto %d - Preco com desconto de 10%%: R$ %.2f\n", p.id, p.preco);
+    printf("=== Estoque com Desconto de 10%% ===\n");
+    imprimir_produtos(estoque, total);
 
     return 0;
 }
