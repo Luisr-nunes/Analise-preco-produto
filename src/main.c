@@ -1,14 +1,14 @@
 #include <stdio.h>
+#include "produto.h"
 
 int main(void) {
     float preco = 100.0f;
-    float *ptr_preco = &preco;
 
     printf("Preco original: R$ %.2f\n", preco);
 
-    *ptr_preco *= 1.10f;
+    aplicar_desconto(&preco, 10.0f);
 
-    printf("Preco com aumento de 10%%: R$ %.2f\n", preco);
+    printf("Preco com desconto de 10%%: R$ %.2f\n", preco);
 
     return 0;
 }
