@@ -8,6 +8,12 @@
 
 <br>
 
+[![C](https://img.shields.io/badge/C-language-A8B9CC?style=flat-square&logo=c&logoColor=white)](https://en.cppreference.com/w/c)
+[![GCC](https://img.shields.io/badge/GCC-compiler-FFA500?style=flat-square&logo=gnu&logoColor=white)](https://gcc.gnu.org/)
+[![Make](https://img.shields.io/badge/Make-automation-000000?style=flat-square&logo=gnu&logoColor=white)](https://www.gnu.org/software/make/)
+
+<br>
+
 </div>
 
 ---
@@ -113,6 +119,12 @@ Analise-preco-produto/
 [PT](#portuguese-version) | **EN**
 
 > A C-based system for product price management, incrementally developed through 5 activities that explore fundamental pointer and dynamic allocation concepts.
+
+<br>
+
+[![C](https://img.shields.io/badge/C-language-A8B9CC?style=flat-square&logo=c&logoColor=white)](https://en.cppreference.com/w/c)
+[![GCC](https://img.shields.io/badge/GCC-compiler-FFA500?style=flat-square&logo=gnu&logoColor=white)](https://gcc.gnu.org/)
+[![Make](https://img.shields.io/badge/Make-automation-000000?style=flat-square&logo=gnu&logoColor=white)](https://www.gnu.org/software/make/)
 
 <br>
 
