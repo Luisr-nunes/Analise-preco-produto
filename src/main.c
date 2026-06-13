@@ -2,13 +2,13 @@
 #include "produto.h"
 
 int main(void) {
-    float preco = 100.0f;
+    Produto p = {1, 100.0f};
 
-    printf("Preco original: R$ %.2f\n", preco);
+    printf("Produto %d - Preco original: R$ %.2f\n", p.id, p.preco);
 
-    aplicar_desconto(&preco, 10.0f);
+    aplicar_desconto(&p, 10.0f);
 
-    printf("Preco com desconto de 10%%: R$ %.2f\n", preco);
+    printf("Produto %d - Preco com desconto de 10%%: R$ %.2f\n", p.id, p.preco);
 
     return 0;
 }
