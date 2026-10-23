@@ -1,5 +1,8 @@
 # Análise de Preço de Produto
 
+<!-- badges -->
+![C](https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=c&logoColor=white) ![GCC](https://img.shields.io/badge/GCC-A42E2B?style=flat-square&logo=gnu&logoColor=white) ![Make](https://img.shields.io/badge/Make-427819?style=flat-square&logo=gnu&logoColor=white)
+
 [Read in English](README.en.md)
 
 Programa de terminal em C para cadastrar produtos e aplicar descontos, usado para praticar ponteiros, structs e alocação dinâmica de memória.

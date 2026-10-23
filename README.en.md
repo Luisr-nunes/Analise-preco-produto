@@ -1,5 +1,8 @@
 # Product Price Analysis
 
+<!-- badges -->
+![C](https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=c&logoColor=white) ![GCC](https://img.shields.io/badge/GCC-A42E2B?style=flat-square&logo=gnu&logoColor=white) ![Make](https://img.shields.io/badge/Make-427819?style=flat-square&logo=gnu&logoColor=white)
+
 [Ler em Português](README.md)
 
 A C terminal program to register products and apply discounts, used to practice pointers, structs and dynamic memory allocation.
